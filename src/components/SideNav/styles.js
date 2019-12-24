@@ -32,13 +32,14 @@ export const NoteButton = styled.button`
   font-weight: 500;
   padding: 10%;
   width: 100%;
-  background-color: inherit;
+  background-color: ${props => props.i ? "white" : "inherit"};
   :hover {
     background-color: white;
   }
   :active {
     background-color: #29B6F6;
   }
+  z-index: 1000;
 `;
 
 export const AddButton = styled(NoteButton)`
@@ -52,5 +53,19 @@ export const AddButton = styled(NoteButton)`
   :active {
     background-color: #29B6F6;
     color: black;
+  }
+`;
+
+export const DeleteNoteButton = styled.button`
+  border: none;
+  outline: none;
+  width: 25%;
+  overflow: hidden;
+  background-color: ${props => props.i && "inherit"};
+  :hover {
+    background-color: pink;
+  }
+  :active {
+    background-color: red;
   }
 `;

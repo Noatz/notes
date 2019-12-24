@@ -23,11 +23,21 @@ const App = () => {
     setSelectedNoteIndex(i);
   }
 
-  // add notes
+  // add note
   const addNote = (event) => {
     setNotes(prevNote => prevNote.concat([{title: '', body: EditorState.createEmpty()}]));
     // should be "notes.length-1"... but for some reason it takes a bit to update
     setSelectedNoteIndex(notes.length);
+  }
+
+  // remove note
+  const deleteNote = (event, i) => {
+    console.log(i);
+    setNotes(prevNote => {
+      prevNote.splice(i, 1);
+      return [...prevNote];
+    });
+    setSelectedNoteIndex(Math.max(0, selectedNoteIndex-1));
   }
 
   // update data with new title
@@ -50,9 +60,11 @@ const App = () => {
   return (
     <div style={{display: "flex", height: "100vh"}}>
       <SideNav
+        selectedNoteIndex={selectedNoteIndex}
         noteTitles={notes.map(e => e.title)}
         changeCurrentNote={changeCurrentNote}
-        addNote={addNote}/>
+        addNote={addNote}
+        deleteNote={deleteNote}/>
       {notes.length > 0 && (
         <Note
           note={notes[selectedNoteIndex]}
