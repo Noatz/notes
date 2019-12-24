@@ -1,19 +1,18 @@
 import React from 'react';
-import { MainNav, Header, Hr, CardButton } from './styles.js'
+import { MainNav, Hr, AddButton, NoteButton } from './styles.js';
 
 const SideNav = ({noteTitles, changeCurrentNote, addNote}) => {
   return (
     <MainNav>
-      <Header>Notes App v0</Header>
+      <AddButton style={{fontWeight: 800}} onClick={addNote}>
+        Add a note
+      </AddButton>
       <Hr/>
-      <CardButton style={{fontWeight: '800', textDecoration: 'underline'}} onClick={addNote}>
-        Add a new note
-      </CardButton>
 
       {noteTitles.map((title, i) => (
-        <CardButton key={i} onClick={e => changeCurrentNote(e, i)}>
+        <NoteButton key={i} onClick={e => changeCurrentNote(e, i)}>
           {title === '' ? '*no title*' : title}
-        </CardButton>
+        </NoteButton>
       ))}
     </MainNav>
   );

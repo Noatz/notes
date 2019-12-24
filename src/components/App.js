@@ -12,7 +12,7 @@ const App = () => {
     const notes = [
       {title: 'My first note!!', body: EditorState.createEmpty()},
       {title: 'Journal 1', body: EditorState.createEmpty()},
-      {title: 'Journal 2', body: EditorState.createEmpty()}
+      {title: 'Journal 2', body: EditorState.createEmpty()},
     ];
     setNotes(notes);
     setSelectedNoteIndex(0);

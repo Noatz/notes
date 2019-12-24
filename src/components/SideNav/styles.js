@@ -2,14 +2,19 @@ import styled from 'styled-components';
 
 export const MainNav = styled.nav`
   background-color: #ccc;
-  width: 20%;
+  min-width: 20%;
+  max-width: 20%;
   height: 100%;
-`;
-
-export const Header = styled.header`
-  text-align: center;
-  padding: 4%;
-  background-color: grey;
+  overflow: auto;
+  ::-webkit-scrollbar {
+    width: 5%;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #fff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #000;
+  }
 `;
 
 export const Hr = styled.hr`
@@ -19,19 +24,33 @@ export const Hr = styled.hr`
   height: .3%
 `;
 
-export const CardButton = styled.button`
+export const NoteButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
   font-size: 20px;
   font-weight: 500;
-  background-color: inherit;
   padding: 10%;
   width: 100%;
+  background-color: inherit;
   :hover {
     background-color: white;
   }
   :active {
     background-color: #29B6F6;
+  }
+`;
+
+export const AddButton = styled(NoteButton)`
+  font-weight: 800;
+  background-color: black;
+  color: white;
+  :hover {
+    background-color: white;
+    color: black;
+  }
+  :active {
+    background-color: black;
+    color: white;
   }
 `;
