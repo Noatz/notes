@@ -20,15 +20,39 @@ export const InputTitle = styled.input`
 export const BlockButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: stretch;
   padding: 1%;
 `;
 
-export const BlockButtons = styled.button`
+export const DropDownDiv = styled.div`
+  width: 20%;
+`;
+
+export const DropDownButton = styled.div`
   border: 1px solid #000;
   outline: none;
   background-color: #ccc;
-  font-size: 18px;
+  padding: 10%;
+  overflow: hidden;
+  :hover {
+    background-color: white;
+  }
   :active {
     background-color: #29B6F6;
+  }
+`;
+
+export const DropDownContent = styled.div`
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  position: absolute;
+  // min-width: inherit;
+  width: inherit;
+  max-width: 15%;
+  z-index: 99;
+  ${DropDownDiv}:hover & {
+    display: flex;
   }
 `;

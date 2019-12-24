@@ -50,7 +50,7 @@ export const AddButton = styled(NoteButton)`
     color: black;
   }
   :active {
-    background-color: black;
-    color: white;
+    background-color: #29B6F6;
+    color: black;
   }
 `;
