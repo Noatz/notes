@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import React from 'react';
+import { Editor, RichUtils } from 'draft-js';
 import './draft.css';
 import { MainDiv, InputTitle, BlockButtonDiv, BlockButtons } from './styles'
 
 const Note = ({note, handleChangeTitle, handleChangeBody}) => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
   const onToggle = blockType => {
-    setEditorState(RichUtils.toggleBlockType(editorState, blockType));
+    handleChangeBody(RichUtils.toggleBlockType(note.body, blockType));
   }
 
   const handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-      setEditorState(newState);
+      handleChangeBody(newState);
       return 'handled';
     }
     return 'not-handled';
@@ -21,13 +19,15 @@ const Note = ({note, handleChangeTitle, handleChangeBody}) => {
 
   return (
     <MainDiv>
-      <InputTitle type='text' placeholder='Your note title...' value={note.title} onChange={handleChangeTitle}/>
+      <InputTitle type='text' placeholder='Your note title...'
+        value={note.title}
+        onChange={handleChangeTitle}/>
 
       <BlockStyleControls onToggle={onToggle}/>
       <Editor style={{color: 'red'}}
-        editorState={editorState}
+        editorState={note.body}
         handleKeyCommand={handleKeyCommand}
-        onChange={setEditorState}
+        onChange={handleChangeBody}
         placeholder='Your note information...'/>
     </MainDiv>
   );

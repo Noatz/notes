@@ -20,8 +20,9 @@ export const Hr = styled.hr`
 `;
 
 export const CardButton = styled.button`
-  border: none; // resets defaults
-  outline: none; // reset defaults when active
+  border: none;
+  outline: none;
+  cursor: pointer;
   font-size: 20px;
   font-weight: 500;
   background-color: inherit;

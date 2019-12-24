@@ -1,0 +1,14 @@
+blockquote {
+  margin: 0;
+  padding: 1%;
+  border-color: #BDC3C7;
+  border-left-style: solid;
+  font-style: italic;
+  color: #BDC3C7;
+}
+
+pre {
+  padding: 0.1% 1% 0.1% 1%;
+  border-radius: 0.em;
+  background-color: #F2F4F4;
+}

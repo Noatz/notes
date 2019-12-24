@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import { EditorState } from 'draft-js';
 import SideNav from './SideNav';
 import Note from './Note';
 
@@ -10,9 +10,9 @@ const App = () => {
   // temporarily set up data
   useEffect(() => {
     const notes = [
-      {title: 'My first note!!', body: 'Some random text'},
-      {title: 'Journal 1', body: 'My journal entry'},
-      {title: 'Journal 2', body: 'My second journal entry'}
+      {title: 'My first note!!', body: EditorState.createEmpty()},
+      {title: 'Journal 1', body: EditorState.createEmpty()},
+      {title: 'Journal 2', body: EditorState.createEmpty()}
     ];
     setNotes(notes);
     setSelectedNoteIndex(0);
@@ -25,7 +25,7 @@ const App = () => {
 
   // add notes
   const addNote = (event) => {
-    setNotes(prevNote => prevNote.concat([{title: '*new note*', body: ''}]));
+    setNotes(prevNote => prevNote.concat([{title: '', body: EditorState.createEmpty()}]));
     // should be "notes.length-1"... but for some reason it takes a bit to update
     setSelectedNoteIndex(notes.length);
   }
@@ -40,28 +40,27 @@ const App = () => {
   }
 
   // update data with new body
-  const handleChangeBody = (event) => {
-    const bodyValue = event.target.value;
+  const handleChangeBody = (editorState) => {
     setNotes(prevNote => {
-      prevNote[selectedNoteIndex].body = bodyValue;
+      prevNote[selectedNoteIndex].body = editorState;
       return [...prevNote];
     });
   }
 
   return (
-    <Div>
-      <SideNav noteTitles={notes.map(e => e.title)} changeCurrentNote={changeCurrentNote} addNote={addNote}/>
+    <div style={{display: "flex", height: "100vh"}}>
+      <SideNav
+        noteTitles={notes.map(e => e.title)}
+        changeCurrentNote={changeCurrentNote}
+        addNote={addNote}/>
       {notes.length > 0 && (
-        <Note note={notes[selectedNoteIndex]} handleChangeTitle={handleChangeTitle} handleChangeBody={handleChangeBody}/>
+        <Note
+          note={notes[selectedNoteIndex]}
+          handleChangeTitle={handleChangeTitle}
+          handleChangeBody={handleChangeBody}/>
       )}
-    </Div>
+    </div>
   );
 }
-
-const Div = styled.div`
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  height: 100vh;
-`;
 
 export default App;
