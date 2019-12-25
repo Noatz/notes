@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainNav, Hr, AddButton, NoteButton, DeleteNoteButton } from './styles.js';
+import { MainNav, Hr, AddButton, NoteButton, DeleteButton } from './styles.js';
 
 const SideNav = ({selectedNoteIndex, noteTitles, changeCurrentNote, addNote, deleteNote}) => {
   return (
@@ -12,11 +12,11 @@ const SideNav = ({selectedNoteIndex, noteTitles, changeCurrentNote, addNote, del
       {noteTitles.map((title, i) => {
         return (
           <div key={i} style={{display: "flex"}}>
-            <DeleteNoteButton
+            <DeleteButton
               i={selectedNoteIndex === i}
               onClick={e => deleteNote(e, i)}>
               Delete
-            </DeleteNoteButton>
+            </DeleteButton>
             <NoteButton
               i={selectedNoteIndex === i}
               onClick={e => changeCurrentNote(e, i)}>

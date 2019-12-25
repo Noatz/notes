@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeleteNoteButton } from '../../styles';
 
 export const MainDiv = styled.div`
   text-align: center;
@@ -26,14 +27,14 @@ export const BlockButtonDiv = styled.div`
 `;
 
 export const DropDownDiv = styled.div`
-  width: 20%;
+  width: 15%;
 `;
 
 export const DropDownButton = styled.div`
   border: 1px solid #000;
   outline: none;
   background-color: #ccc;
-  padding: 10%;
+  padding: 5%;
   overflow: hidden;
   :hover {
     background-color: white;
@@ -48,11 +49,21 @@ export const DropDownContent = styled.div`
   flex-direction: column;
   overflow: hidden;
   position: absolute;
-  // min-width: inherit;
   width: inherit;
   max-width: 15%;
   z-index: 99;
   ${DropDownDiv}:hover & {
     display: flex;
+  }
+`;
+
+export const DeleteButton = styled(DeleteNoteButton)`
+  display: none;
+  background-color: #ccc;
+  border: 1px solid black;
+  float: right;
+  width: 5em;
+  @media(max-width: 800px) {
+    display: inline-block;
   }
 `;

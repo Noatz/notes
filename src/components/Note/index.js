@@ -7,10 +7,11 @@ import {
   BlockButtonDiv,
   DropDownDiv,
   DropDownButton,
-  DropDownContent
+  DropDownContent,
+  DeleteButton
 } from './styles'
 
-const Note = ({note, handleChangeTitle, handleChangeBody}) => {
+const Note = ({selectedNoteIndex, note, handleChangeTitle, handleChangeBody, deleteNote}) => {
   const onToggle = blockType => {
     handleChangeBody(RichUtils.toggleBlockType(note.body, blockType));
   }
@@ -26,6 +27,9 @@ const Note = ({note, handleChangeTitle, handleChangeBody}) => {
 
   return (
     <MainDiv>
+      <DeleteButton onClick={e => deleteNote(e, selectedNoteIndex)}>
+        Delete
+      </DeleteButton>
       <InputTitle type='text' placeholder='Your note title...'
         value={note.title}
         onChange={handleChangeTitle}/>
@@ -63,6 +67,12 @@ const BlockStyleControls = ({onToggle}) => {
 
   return (
     <BlockButtonDiv>
+      <DropDownDiv>
+        <DropDownButton onClick={e => onClick(e, 'unstyled')}>
+          Clear Fmt
+        </DropDownButton>
+      </DropDownDiv>
+
       <DropDownDiv>
         <DropDownButton>Headings</DropDownButton>
         <DropDownContent>

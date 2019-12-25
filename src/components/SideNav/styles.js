@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DeleteNoteButton } from '../../styles';
 
 export const MainNav = styled.nav`
   background-color: #ccc;
@@ -56,16 +57,9 @@ export const AddButton = styled(NoteButton)`
   }
 `;
 
-export const DeleteNoteButton = styled.button`
-  border: none;
-  outline: none;
+export const DeleteButton = styled(DeleteNoteButton)`
   width: 25%;
-  overflow: hidden;
-  background-color: ${props => props.i && "inherit"};
-  :hover {
-    background-color: pink;
-  }
-  :active {
-    background-color: red;
+  @media(max-width: 800px) {
+    display: none;
   }
 `;

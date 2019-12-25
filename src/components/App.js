@@ -67,9 +67,11 @@ const App = () => {
         deleteNote={deleteNote}/>
       {notes.length > 0 && (
         <Note
+          selectedNoteIndex={selectedNoteIndex}
           note={notes[selectedNoteIndex]}
           handleChangeTitle={handleChangeTitle}
-          handleChangeBody={handleChangeBody}/>
+          handleChangeBody={handleChangeBody}
+          deleteNote={deleteNote}/>
       )}
     </div>
   );
